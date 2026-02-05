@@ -228,9 +228,9 @@ export const FileDropper: React.FC<FileDropperProps> = ({ onFilesSelected }) => 
       // Check if we have a complete path
       const cleanPath = newValue.trim().replace(/^["']|["']$/g, '');
 
-      // For very long inputs, also check periodically if we have a valid path
-      // This helps with pasted paths that might be very long
-      if (cleanPath.length > 10 && (getFileInfo(cleanPath) || isDirectory(cleanPath))) {
+      // IMMEDIATE CHECK: If it's a valid file or directory, process it right away
+      // This handles drag-and-drop which sends the full path at once
+      if (getFileInfo(cleanPath) || isDirectory(cleanPath)) {
         processPath(cleanPath);
         setInputValue('');
         return;
