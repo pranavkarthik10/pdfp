@@ -46,13 +46,13 @@ export const Welcome: React.FC = React.memo(() => {
         ██████╔╝██║  ██║█████╗  ██████╔╝
       </Text>
       <Text color="#ff6b4a" bold>
-        ██╔═══╝ ██║  ██║██╔══╝  ██╔══██╗
+        ██╔═══╝ ██║  ██║██╔══╝  ██╔═══╝ 
       </Text>
       <Text color="#ff6b4a" bold>
-        ██║     ██████╔╝██║     ██║  ██║
+        ██║     ██████╔╝██║     ██║     
       </Text>
       <Text color="#ff6b4a" bold>
-        ╚═╝     ╚═════╝ ╚═╝     ╚═╝  ╚═╝
+        ╚═╝     ╚═════╝ ╚═╝     ╚═╝     
       </Text>
       <Box marginTop={1}>
         <Text color="#999999">Fast PDF compression for your terminal</Text>
