@@ -92,7 +92,8 @@ const SUPPORTED_PDF_FORMATS = ['.pdf'];
 
 export function getFileInfo(filePath: string): FileInfo | null {
   try {
-    const cleanPath = filePath.trim().replace(/^["']|["']$/g, '');
+    // Unescape spaces (\ ) and handle quotes
+    const cleanPath = filePath.trim().replace(/^["']|["']$/g, '').replace(/\\ /g, ' ');
 
     if (!fs.existsSync(cleanPath)) {
       return null;
@@ -169,7 +170,8 @@ export function getFilesFromFolder(folderPath: string): FileInfo[] {
 // Check if a path is a directory
 export function isDirectory(filePath: string): boolean {
   try {
-    const cleanPath = filePath.trim().replace(/^["']|["']$/g, '');
+    // Unescape spaces (\ ) and handle quotes
+    const cleanPath = filePath.trim().replace(/^["']|["']$/g, '').replace(/\\ /g, ' ');
     return fs.existsSync(cleanPath) && fs.statSync(cleanPath).isDirectory();
   } catch {
     return false;
@@ -198,7 +200,8 @@ export function generateOutputPath(inputPath: string, advanced?: AdvancedSetting
 // Validate if a directory exists
 export function isValidDirectory(dirPath: string): boolean {
   try {
-    const cleanPath = dirPath.trim().replace(/^["']|["']$/g, '');
+    // Unescape spaces (\ ) and handle quotes
+    const cleanPath = dirPath.trim().replace(/^["']|["']$/g, '').replace(/\\ /g, ' ');
     return fs.existsSync(cleanPath) && fs.statSync(cleanPath).isDirectory();
   } catch {
     return false;
