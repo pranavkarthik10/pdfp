@@ -226,7 +226,7 @@ export const Setup: React.FC<SetupProps> = ({ forceSetup = false, onComplete }) 
     <Box flexDirection="column">
       {/* Header */}
       <Box flexDirection="column">
-        <Text bold color="#ff6b4a">Chunk Setup</Text>
+        <Text bold color="#ff6b4a">pdfp Setup</Text>
         <Text color="#999999">Configure your environment for PDF compression</Text>
       </Box>
 
@@ -339,7 +339,7 @@ export const Setup: React.FC<SetupProps> = ({ forceSetup = false, onComplete }) 
             {gsVersion && <Text color="#666666"> (v{gsVersion})</Text>}
           </Text>
           <Box marginTop={1}>
-            <Text color="#999999">Chunk is ready to compress PDF files.</Text>
+            <Text color="#999999">pdfp is ready to compress PDF files.</Text>
           </Box>
           <Box marginTop={1}>
             <Text color="#666666">Enter to continue · Esc to exit</Text>
@@ -393,7 +393,7 @@ export const Setup: React.FC<SetupProps> = ({ forceSetup = false, onComplete }) 
           </Box>
           <Box marginTop={1}>
             <Text color="#999999">After installing, run </Text>
-            <Text color="cyan">chunk</Text>
+            <Text color="cyan">pdfp</Text>
             <Text color="#999999"> again to verify.</Text>
           </Box>
           <Box marginTop={1}>

@@ -183,8 +183,8 @@ export function generateOutputPath(inputPath: string, advanced?: AdvancedSetting
   const dir = advanced?.outputFolder || path.dirname(inputPath);
   const basename = path.basename(inputPath, ext);
 
-  // Base output name with -chunked suffix
-  const baseOutputName = `${basename}-chunked`;
+  // Base output name with -pdfp suffix
+  const baseOutputName = `${basename}-pdfp`;
   let outputPath = path.join(dir, `${baseOutputName}${ext}`);
 
   // Check for existing files and add incrementing suffix if needed

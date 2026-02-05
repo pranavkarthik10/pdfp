@@ -1,10 +1,10 @@
 {
-  "name": "chunk",
+  "name": "pdfp",
   "version": "1.0.0",
   "description": "Fast PDF compression for your terminal",
   "type": "module",
   "bin": {
-    "chunk": "./dist/index.js"
+    "pdfp": "./dist/index.js"
   },
   "scripts": {
     "build": "tsc",
@@ -28,12 +28,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/saviomartin/chunk.git"
+    "url": "https://github.com/saviomartin/pdfp.git"
   },
   "bugs": {
-    "url": "https://github.com/saviomartin/chunk/issues"
+    "url": "https://github.com/saviomartin/pdfp/issues"
   },
-  "homepage": "https://github.com/saviomartin/chunk#readme",
+  "homepage": "https://github.com/saviomartin/pdfp#readme",
   "files": [
     "dist",
     "README.md",

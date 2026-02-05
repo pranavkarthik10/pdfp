@@ -1,17 +1,17 @@
-# Chunk
+# pdfp
 
 Fast PDF compression for your terminal. Beautiful, interactive CLI tool powered by Ghostscript.
 
 ## Installation
 
 ```bash
-npm install -g chunk
+npm install -g pdfp
 ```
 
 Then run:
 
 ```bash
-chunk
+pdfp
 ```
 
 ## Prerequisites
@@ -32,7 +32,7 @@ Ghostscript must be installed:
 
 ## Usage
 
-Simply run `chunk` and follow the interactive prompts. Compressed files are saved with a `-chunked` suffix in the same directory (or your chosen output folder). Run `chunk auto {path_to_pdf}` to compress files skipping questions.
+Simply run `pdfp` and follow the interactive prompts. Compressed files are saved with a `-pdfp` suffix in the same directory (or your chosen output folder). Run `pdfp auto {path_to_pdf}` to compress files skipping questions.
 
 ## License
 

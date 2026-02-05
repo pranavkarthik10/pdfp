@@ -24,7 +24,7 @@ async function sleep(ms: number): Promise<void> {
 
 async function animateInstall() {
   const version = '1.0.0';
-  console.log(`\n${BOLD}${CYAN}Installing Chunk version: ${version}${RESET}`);
+  console.log(`\n${BOLD}${CYAN}Installing pdfp version: ${version}${RESET}`);
   
   // Simulate installation progress
   for (let i = 0; i <= 100; i += 2) {
@@ -44,11 +44,11 @@ async function main() {
     
     if (gsInstalled) {
       console.log(`${GREEN}✓${RESET} ${BOLD}Ghostscript detected${RESET}`);
-      console.log(`${GREEN}✓${RESET} ${BOLD}Chunk is ready to use${RESET}`);
-      console.log(`\n${GRAY}Run ${CYAN}chunk${GRAY} to start compressing PDF files${RESET}\n`);
+      console.log(`${GREEN}✓${RESET} ${BOLD}pdfp is ready to use${RESET}`);
+      console.log(`\n${GRAY}Run ${CYAN}pdfp${GRAY} to start compressing PDF files${RESET}\n`);
     } else {
       console.log(`${GRAY}⚠ Ghostscript not detected${RESET}`);
-      console.log(`${GRAY}Chunk requires Ghostscript to compress PDF files${RESET}`);
+      console.log(`${GRAY}pdfp requires Ghostscript to compress PDF files${RESET}`);
       console.log(`\n${GRAY}Install Ghostscript:${RESET}`);
       
       const platform = process.platform;
@@ -60,7 +60,7 @@ async function main() {
         console.log(`  ${CYAN}Download from https://www.ghostscript.com/download/gsdnld.html${RESET}`);
       }
       
-      console.log(`\n${GRAY}Then run ${CYAN}chunk${GRAY} to start${RESET}\n`);
+      console.log(`\n${GRAY}Then run ${CYAN}pdfp${GRAY} to start${RESET}\n`);
     }
   } catch (error) {
     // Silently fail - postinstall errors shouldn't block installation

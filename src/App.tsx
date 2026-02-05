@@ -25,7 +25,7 @@ import {
   BatchFileInfo,
 } from './types.js';
 
-const THANK_YOU_MESSAGE = 'Thank you for using Chunk. Just type "chunk" next time to compress any PDF.';
+const THANK_YOU_MESSAGE = 'Thank you for using pdfp. Just type "pdfp" next time to compress any PDF.';
 
 export const App: React.FC = () => {
   useApp(); // Keep the hook to ensure proper Ink lifecycle

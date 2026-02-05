@@ -12,15 +12,15 @@ const args = process.argv.slice(2);
 
 if (args.includes('--help') || args.includes('-h')) {
   console.log(`
-Chunk - Fast PDF compression for your terminal
+pdfp - Fast PDF compression for your terminal
 
 Usage:
-  chunk                  Start the interactive CLI
-  chunk auto <file>      Quick compress a single PDF (ebook quality, no questions)
-  chunk setup            Run setup manually
-  chunk setup --force    Run setup flow even if Ghostscript is installed
-  chunk --help           Show this help message
-  chunk --version        Show version number
+  pdfp                  Start the interactive CLI
+  pdfp auto <file>      Quick compress a single PDF (ebook quality, no questions)
+  pdfp setup            Run setup manually
+  pdfp setup --force    Run setup flow even if Ghostscript is installed
+  pdfp --help           Show this help message
+  pdfp --version        Show version number
 
 Supported formats:
   PDF files only
@@ -31,14 +31,14 @@ Requirements:
               or: sudo apt-get install ghostscript (Linux)
 
 Examples:
-  chunk                           Start interactive mode
-  chunk auto /path/to/file.pdf    Quick compress with defaults
+  pdfp                           Start interactive mode
+  pdfp auto /path/to/file.pdf    Quick compress with defaults
   `);
   process.exit(0);
 }
 
 if (args.includes('--version') || args.includes('-v')) {
-  console.log('Chunk v1.0.0');
+  console.log('pdfp v1.0.0');
   process.exit(0);
 }
 
@@ -72,8 +72,8 @@ if (args[0] === 'setup') {
   const filePath = args.slice(1).join(' '); // Join in case path has spaces
 
   if (!filePath) {
-    console.log('Usage: chunk auto <file>');
-    console.log('Example: chunk auto /path/to/file.pdf');
+    console.log('Usage: pdfp auto <file>');
+    console.log('Example: pdfp auto /path/to/file.pdf');
     process.exit(1);
   }
 
