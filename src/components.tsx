@@ -34,20 +34,29 @@ const Divider: React.FC = () => {
 
 // Welcome component - always renders content to stay visible
 export const Welcome: React.FC = React.memo(() => {
-  const asciiArt = `
-   ________                __         
-  / ____/ /_  ____  ____  / /__  _____
- / /   / __ \/ __ \/ __ \/ / _ \/ ___/
-/ /___/ / / / /_/ / /_/ / /  __/ /    
-\____/_/ /_/\____/ .___/_/\___/_/     
-                /_/                  `;
-
   return (
     <Box flexDirection="column" marginBottom={1}>
-      <Text color="#fff">
-        {asciiArt}
+      <Text color="#ff6b4a" bold>
+        ██████╗██╗  ██╗██╗   ██╗███╗   ██╗██╗  ██╗
       </Text>
-      <Text color="#999999">Fast PDF compression for your terminal</Text>
+      <Text color="#ff6b4a" bold>
+        ██╔════╝██║  ██║██║   ██║████╗  ██║██║ ██╔╝
+      </Text>
+      <Text color="#ff6b4a" bold>
+        ██║     ███████║██║   ██║██╔██╗ ██║█████╔╝ 
+      </Text>
+      <Text color="#ff6b4a" bold>
+        ██║     ██╔══██║██║   ██║██║╚██╗██║██╔═██╗ 
+      </Text>
+      <Text color="#ff6b4a" bold>
+        ╚██████╗██║  ██║╚██████╔╝██║ ╚████║██║  ██╗
+      </Text>
+      <Text color="#ff6b4a" bold>
+        ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝
+      </Text>
+      <Box marginTop={1}>
+        <Text color="#999999">Fast PDF compression for your terminal</Text>
+      </Box>
     </Box>
   );
 });
@@ -63,6 +72,10 @@ export const FileDropper: React.FC<FileDropperProps> = ({ onFilesSelected }) => 
   const [inputValue, setInputValue] = useState('');
   const [folderName, setFolderName] = useState<string | null>(null);
   const [inputTimeout, setInputTimeout] = useState<NodeJS.Timeout | null>(null);
+  
+  // Use ref to track latest droppedFiles state for callbacks
+  const droppedFilesRef = React.useRef(droppedFiles);
+  droppedFilesRef.current = droppedFiles;
 
   // Validate files whenever they change
   useEffect(() => {
@@ -152,20 +165,22 @@ export const FileDropper: React.FC<FileDropperProps> = ({ onFilesSelected }) => 
 
       // Small delay to let state update
       setTimeout(() => {
-        if (droppedFiles.length === 0) {
+        // Use ref to get latest state
+        const currentFiles = droppedFilesRef.current;
+        if (currentFiles.length === 0) {
           setError('Drop a file or folder first, or paste its path and press Enter');
           return;
         }
 
-        const validation = validateBatchFiles(droppedFiles);
+        const validation = validateBatchFiles(currentFiles);
         if (!validation.valid) {
           setError(validation.error || 'Invalid files');
           return;
         }
 
-        const batchFiles = toBatchFiles(droppedFiles);
+        const batchFiles = toBatchFiles(currentFiles);
         onFilesSelected(batchFiles);
-      }, 10);
+      }, 50);
       return;
     }
 
