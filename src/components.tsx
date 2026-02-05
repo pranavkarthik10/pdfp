@@ -72,10 +72,6 @@ export const FileDropper: React.FC<FileDropperProps> = ({ onFilesSelected }) => 
   const [inputValue, setInputValue] = useState('');
   const [folderName, setFolderName] = useState<string | null>(null);
   const [inputTimeout, setInputTimeout] = useState<NodeJS.Timeout | null>(null);
-  
-  // Use ref to track latest droppedFiles state for callbacks
-  const droppedFilesRef = React.useRef(droppedFiles);
-  droppedFilesRef.current = droppedFiles;
 
   // Validate files whenever they change
   useEffect(() => {
@@ -165,22 +161,20 @@ export const FileDropper: React.FC<FileDropperProps> = ({ onFilesSelected }) => 
 
       // Small delay to let state update
       setTimeout(() => {
-        // Use ref to get latest state
-        const currentFiles = droppedFilesRef.current;
-        if (currentFiles.length === 0) {
+        if (droppedFiles.length === 0) {
           setError('Drop a file or folder first, or paste its path and press Enter');
           return;
         }
 
-        const validation = validateBatchFiles(currentFiles);
+        const validation = validateBatchFiles(droppedFiles);
         if (!validation.valid) {
           setError(validation.error || 'Invalid files');
           return;
         }
 
-        const batchFiles = toBatchFiles(currentFiles);
+        const batchFiles = toBatchFiles(droppedFiles);
         onFilesSelected(batchFiles);
-      }, 50);
+      }, 10);
       return;
     }
 
@@ -217,21 +211,6 @@ export const FileDropper: React.FC<FileDropperProps> = ({ onFilesSelected }) => 
 
     // Regular text input - accumulate for path
     if (input && !key.ctrl && !key.meta) {
-      // Check if input contains a newline - that means drag-and-drop sent full path
-      if (input.includes('\n') || input.includes('\r')) {
-        // Split by newlines and process each potential path
-        const paths = (inputValue + input).split(/\r?\n/).filter(p => p.trim());
-        
-        for (const path of paths) {
-          const cleanPath = path.trim().replace(/^["']|["']$/g, '');
-          if (cleanPath && (getFileInfo(cleanPath) || isDirectory(cleanPath))) {
-            processPath(cleanPath);
-          }
-        }
-        setInputValue('');
-        return;
-      }
-
       // Clear any existing timeout
       if (inputTimeout) {
         clearTimeout(inputTimeout);
@@ -243,9 +222,9 @@ export const FileDropper: React.FC<FileDropperProps> = ({ onFilesSelected }) => 
       // Check if we have a complete path
       const cleanPath = newValue.trim().replace(/^["']|["']$/g, '');
 
-      // IMMEDIATE CHECK: If it's a valid file or directory, process it right away
-      // This handles drag-and-drop which sends the full path at once
-      if (getFileInfo(cleanPath) || isDirectory(cleanPath)) {
+      // For very long inputs, also check periodically if we have a valid path
+      // This helps with pasted paths that might be very long
+      if (cleanPath.length > 10 && (getFileInfo(cleanPath) || isDirectory(cleanPath))) {
         processPath(cleanPath);
         setInputValue('');
         return;
