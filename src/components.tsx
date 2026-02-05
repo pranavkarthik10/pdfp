@@ -217,6 +217,21 @@ export const FileDropper: React.FC<FileDropperProps> = ({ onFilesSelected }) => 
 
     // Regular text input - accumulate for path
     if (input && !key.ctrl && !key.meta) {
+      // Check if input contains a newline - that means drag-and-drop sent full path
+      if (input.includes('\n') || input.includes('\r')) {
+        // Split by newlines and process each potential path
+        const paths = (inputValue + input).split(/\r?\n/).filter(p => p.trim());
+        
+        for (const path of paths) {
+          const cleanPath = path.trim().replace(/^["']|["']$/g, '');
+          if (cleanPath && (getFileInfo(cleanPath) || isDirectory(cleanPath))) {
+            processPath(cleanPath);
+          }
+        }
+        setInputValue('');
+        return;
+      }
+
       // Clear any existing timeout
       if (inputTimeout) {
         clearTimeout(inputTimeout);
