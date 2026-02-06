@@ -266,19 +266,14 @@ export const FileDropper: React.FC<FileDropperProps> = ({ onFilesSelected }) => 
       <Box marginTop={1}>
         <Text color="#999999">Drop PDF files one by one, paste paths, or a folder for batch processing</Text>
       </Box>
-      <Box marginTop={1}>
-        <Text color="#666666">💡 Tip: Drag files from Finder and drop them here, or copy-paste the file path</Text>
-      </Box>
 
       {/* Show input prompt when no files are selected */}
       {droppedFiles.length === 0 && !error && (
-        <Box marginTop={1}>
-          <Text color="#666666">Or paste the file/folder path here:</Text>
-          <Box marginTop={1}>
-            <Text color="cyan">
-              {inputValue || <Text color="#444444">(empty - paste your file path)</Text>}
-            </Text>
-          </Box>
+        <Box marginTop={1} flexDirection="row">
+          <Text color="#999999">Or paste the file/folder path here: </Text>
+          <Text color="cyan">
+            {inputValue || <Text color="#444444">(empty - paste your file path)</Text>}
+          </Text>
         </Box>
       )}
 
@@ -325,15 +320,13 @@ export const FileDropper: React.FC<FileDropperProps> = ({ onFilesSelected }) => 
           borderStyle="round"
           borderColor="gray"
         >
-          <Text color="#666666">Drop PDF file or folder here...</Text>
+          <Text color="#999999">Drop PDF file or folder here...</Text>
         </Box>
       )}
 
       {/* Instructions */}
       <Box marginTop={1}>
-        {droppedFiles.length === 0 ? (
-          <Text color="#666666">Tip: Drop a folder to compress all PDFs inside</Text>
-        ) : (
+        {droppedFiles.length > 0 && (
           <Text color="#666666">
             Drop another file · Backspace to remove · Enter to continue
           </Text>

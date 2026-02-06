@@ -132,7 +132,8 @@ export function isSupportedFormat(filePath: string): boolean {
 // Get all supported files from a folder (non-recursive)
 export function getFilesFromFolder(folderPath: string): FileInfo[] {
   try {
-    const cleanPath = folderPath.trim().replace(/^["']|["']$/g, '');
+    // Unescape spaces (\ ) and handle quotes
+    const cleanPath = folderPath.trim().replace(/^["']|["']$/g, '').replace(/\\ /g, ' ');
     
     if (!fs.existsSync(cleanPath)) {
       return [];
