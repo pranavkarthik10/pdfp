@@ -2,6 +2,8 @@
 
 Fast PDF compression for your terminal. Beautiful, interactive CLI tool powered by Ghostscript.
 
+![Demo](demo.gif)
+
 ## Installation
 
 ```bash
