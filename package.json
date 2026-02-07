@@ -24,16 +24,16 @@
     "interactive",
     "ghostscript"
   ],
-  "author": "Savio Martin <saviomartin2007@gmail.com>",
+  "author": "pranavkarthik10",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/saviomartin/pdfp.git"
+    "url": "https://github.com/pranavkarthik10/pdfp.git"
   },
   "bugs": {
-    "url": "https://github.com/saviomartin/pdfp/issues"
+    "url": "https://github.com/pranavkarthik10/pdfp/issues"
   },
-  "homepage": "https://github.com/saviomartin/pdfp#readme",
+  "homepage": "https://github.com/pranavkarthik10/pdfp#readme",
   "files": [
     "dist",
     "README.md",

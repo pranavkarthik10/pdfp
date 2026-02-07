@@ -16,7 +16,7 @@ pdfp
 
 ## Prerequisites
 
-Ghostscript must be installed:
+Ghostscript is required for PDF compression. It's automatically installed for you, or you can install it manually:
 
 **macOS:** `brew install ghostscript`  
 **Linux:** `sudo apt-get install ghostscript`  
